@@ -1,0 +1,86 @@
+@charset "UTF-8";
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+}
+
+h1 {
+    color: #333;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+th, td {
+    border: 1px solid #ccc;
+    padding: 10px;
+    text-align: left;
+}
+
+th {
+    background-color: #f2f2f2;
+    text-align: left;
+}
+
+a {
+    text-decoration: none;
+    color: #0066cc;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+form label {
+    display: inline-block;
+    width: 120px;
+    margin-top: 20px;
+    vertical-align: top;
+}
+
+form input:not(#quantity), form textarea, form select{
+    width: 300px;
+    padding: 5px;
+    margin-top: 20px;
+}
+
+.btn {
+    display: inline-block;
+    padding: 6px 12px;
+    margin: 4px;
+    border: none;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.btn-primary {
+    background-color: #007bff;
+    color: white;
+}
+
+.btn-secondary {
+    background-color: #6c757d;
+    color: white;
+}
+
+.btn-success {
+    background-color: #28a745;
+    color: white;
+}
+
+.btn-danger {
+    background-color: #dc3545;
+    color: white;
+}
+
+.error {
+    color: #ff0000;
+}
+
+.success {
+    color: #00aa00;
+}

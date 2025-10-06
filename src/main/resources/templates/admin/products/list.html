@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>商品管理</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+    <h1>商品管理</h1>
+    <!-- admin/products.html -->
+    <p><a th:href="@{/admin/products/create}">新規商品追加</a></p>
+    <div th:if="${errorMessage}" th:text="${errorMessage}" style="color:red"></div>
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>名前</th>
+                <th>価格</th>
+                <th>操作</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="product : ${products}">
+                <td th:text="${product.id}">1</td>
+                <td th:text="${product.name}">商品名</td>
+                <td th:text="${product.price}">1000</td>
+                <td>
+                    <a th:href="@{/admin/products/edit/{id}(id=${product.id})}" class="btn btn-secondary">編集</a>
+                    <form th:action="@{/admin/products/delete/{id}(id=${product.id})}" method="post" style="display:inline;">
+                        <button type="submit" onclick="return confirm('本当に削除しますか？');" class="btn btn-danger">削除</button>
+                    </form>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <p><a th:href="@{/}">トップページへ戻る</a></p>
+    <form th:action="@{/logout}" method="post">
+        <button type="submit" class="btn btn-secondary">ログアウト</button>
+    </form>
+</body>
+</html>

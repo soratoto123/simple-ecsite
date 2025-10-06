@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>会員登録</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+    <h1>会員登録</h1>
+    <form th:action="@{/auth/register}" th:object="${user}" method="post">
+        <div>
+            <label>氏名:</label>
+            <input type="text" th:field="*{name}" required />
+        </div>
+        <div>
+            <label>メールアドレス:</label>
+            <input type="email" th:field="*{email}" required />
+            <div th:if="${#fields.hasErrors('email')}" th:errors="*{email}" style="color:red"></div>
+        </div>
+        <div>
+            <label>パスワード:</label>
+            <input type="password" th:field="*{password}" required />
+        </div>
+        <div>
+            <label>郵便番号:</label>
+            <input type="text" th:field="*{postalCode}" required />
+        </div>
+        <div>
+            <label>住所:</label>
+            <input type="text" th:field="*{address}" required />
+        </div>
+        <div>
+            <button type="submit" class="btn btn-success">登録</button>
+        </div>
+    </form>
+    <div th:if="${error}">
+        <p th:text="${error}" style="color:red;"></p>
+    </div>
+</body>
+</html>

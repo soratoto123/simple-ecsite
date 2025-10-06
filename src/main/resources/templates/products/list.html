@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>商品一覧</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+    <h1>商品一覧</h1>
+    <div th:if="${products.isEmpty()}">
+        <p>商品が登録されていません。</p>
+    </div>
+    <div th:unless="${products.isEmpty()}">
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>画像</th>
+                    <th>名前</th>
+                    <th>価格</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="product : ${products}">
+                    <td th:text="${product.id}">1</td>
+                    <td>
+                        <img th:src="${product.imageUrl}" alt="商品画像" width="100"/>
+                    </td>
+                    <td>
+                        <a th:href="@{/products/{id}(id=${product.id})}" th:text="${product.name}">商品名</a>
+                    </td>
+                    <td th:text="${product.price}">1000</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <p><a th:href="@{/search}">検索</a></p>
+    <p><a th:href="@{/}">トップページへ戻る</a></p>
+</body>
+</html>

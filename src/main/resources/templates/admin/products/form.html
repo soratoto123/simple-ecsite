@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="${#strings.isEmpty(product.id) ? '商品追加' : '商品編集'}">商品フォーム</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+    <h1 th:text="${#strings.isEmpty(product.id) ? '商品追加' : '商品編集'}">商品フォーム</h1>
+    <form th:action="@{${#strings.isEmpty(product.id) ? '/admin/products/create' : '/admin/products/edit/' + product.id}}" th:object="${product}" method="post">
+        <div>
+            <label>名前:</label>
+            <input type="text" th:field="*{name}" required />
+        </div>
+        <div>
+            <label>説明:</label>
+            <textarea th:field="*{description}"></textarea>
+        </div>
+        <div>
+            <label>価格:</label>
+            <input type="number" th:field="*{price}" required />
+        </div>
+        <div>
+            <label>カテゴリ:</label>
+            <input type="text" th:field="*{category}" required />
+        </div>
+        <div>
+            <label>商品画像URL:</label>
+            <input type="text" th:field="*{imageUrl}" />
+            <div th:if="${#fields.hasErrors('imageUrl')}" th:errors="*{imageUrl}" style="color:red";></div>
+        </div>
+        <div>
+            <button type="submit" th:text="${#strings.isEmpty(product.id) ? '追加' : '更新'}" class="btn btn-success">送信</button>
+        </div>
+    </form>
+    <a th:href="@{/admin/products}">戻る</a>
+</body>
+</html>

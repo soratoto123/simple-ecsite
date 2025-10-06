@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>トップページ</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+<body>
+    <h1>トップページ</h1>
+    <p><a th:href="@{/products}">商品一覧</a></p>
+    <p><a th:href="@{/search}">検索</a></p>
+    <p><a th:href="@{/users/profile}">マイページ（要ログイン）</a></p>
+    <p><a th:href="@{/cartitems}">カートアイテム</a><p>
+    <div sec:authorize="hasRole('ROLE_ADMIN')">
+        <p><a th:href="@{/admin/products}">商品管理（管理者ページ）</a></p>
+        <p><a th:href="@{/admin/orders}">注文管理（管理者ページ）</a></p>
+    </div>
+    <div sec:authorize="isAuthenticated()">
+        <form th:action="@{/logout}" method="post">
+            <button type="submit" class="btn btn-secondary">ログアウト</button>
+        </form>
+    </div>
+</body>
+</html>

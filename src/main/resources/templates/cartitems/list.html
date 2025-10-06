@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>カートアイテム一覧</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+    <h1>カートアイテム一覧</h1>
+    
+    <div th:if="${cartitems.isEmpty()}">
+        <p>カート登録された商品はありません。</p>
+    </div>
+    
+    <div th:unless="${cartitems.isEmpty()}">
+        <table>
+            <thead>
+                <tr>
+                    <th>商品名</th>
+                    <th>画像</th>
+                    <th>価格</th>
+                    <th>個数</th>
+                    <th>操作</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="cartitem : ${cartitems}">
+                    <td>
+                        <a th:href="@{/products/{id}(id=${cartitem.product.id})}" th:text="${cartitem.product.name}">商品名</a>
+                    </td>
+                    <td>
+                        <img th:src="${cartitem.product.imageUrl}" alt="商品画像" width="100"/>
+                    </td>
+                    <td th:text="${cartitem.product.price}">1000</td>
+                    <td th:text="${cartitem.count}">1000</td>
+                    <td>
+                        <form th:action="@{/cartitems/remove/{id}(id=${cartitem.id})}" method="post">
+                            <button type="submit" class="btn btn-danger">カートアイテムから削除</button>
+                        </form>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <p th:text="'合計金額：'+${total}+'円'"></p>
+        <form th:action="@{/purchase/all}" method="post">
+            <button type="submit" class="btn btn-primary">購入する</button>
+        </form>
+    </div>
+    <p><a th:href="@{/}">トップページへ戻る</a></p>
+</body>
+</html>

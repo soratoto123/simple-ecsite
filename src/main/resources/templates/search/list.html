@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>検索</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+    <h1>カテゴリーから探す</h1>
+    <p><a th:href="@{/search/{category}(category=shoes)}">サッカーシューズ</a></p>
+    <p><a th:href="@{/search/{category}(category=wear)}">サッカーウェア</a></p>
+    <p><a th:href="@{/search/{category}(category=ball)}">サッカーボール</a></p>
+    <p><a th:href="@{/search/{category}(category=accessory)}">アクセサリー</a></p>
+    <p><a th:href="@{/search/{category}(category=bag)}">バック</a></p>
+    <p><a th:href="@{/search/{category}(category=keeper)}">ゴールキーパー</a></p>
+    <p><a th:href="@{/}">トップページへ戻る</a></p>
+</body>
+</html>
