@@ -10,17 +10,17 @@
     <form th:action="@{/auth/register}" th:object="${user}" method="post">
         <div>
             <label>氏名:</label>
-            <input type="text" th:field="*{name}" required />
+            <input type="text" th:field="*{name}" required maxlength="100" />
             <div th:if="${#fields.hasErrors('name')}" th:errors="*{name}" style="color:red"></div>
         </div>
         <div>
             <label>メールアドレス:</label>
-            <input type="email" th:field="*{email}" required />
+            <input type="email" th:field="*{email}" required maxlength="255" />
             <div th:if="${#fields.hasErrors('email')}" th:errors="*{email}" style="color:red"></div>
         </div>
         <div>
             <label>パスワード:</label>
-            <input type="password" th:field="*{password}" required />
+            <input type="password" th:field="*{password}" required maxlength="255" />
         </div>
         <div>
             <label>郵便番号:</label>
@@ -29,7 +29,7 @@
         </div>
         <div>
             <label>住所:</label>
-            <input type="text" th:field="*{address}" required />
+            <input type="text" th:field="*{address}" required maxlength="255" />
             <div th:if="${#fields.hasErrors('address')}" th:errors="*{address}" style="color:red"></div>
         </div>
         <div>

@@ -10,7 +10,7 @@
     <form th:action="@{${#strings.isEmpty(product.id) ? '/admin/products/create' : '/admin/products/edit/' + product.id}}" th:object="${product}" method="post">
         <div>
             <label>名前:</label>
-            <input type="text" th:field="*{name}" required />
+            <input type="text" th:field="*{name}" required maxlength="100" />
             <div th:if="${#fields.hasErrors('name')}" th:errors="*{name}" style="color:red";></div>
         </div>
         <div>
@@ -25,12 +25,12 @@
         </div>
         <div>
             <label>カテゴリ:</label>
-            <input type="text" th:field="*{category}" required />
+            <input type="text" th:field="*{category}" required maxlength="100" />
             <div th:if="${#fields.hasErrors('category')}" th:errors="*{category}" style="color:red";></div>
         </div>
         <div>
             <label>商品画像URL:</label>
-            <input type="text" th:field="*{imageUrl}" />
+            <input type="text" th:field="*{imageUrl}" maxlength="255"/ >
             <div th:if="${#fields.hasErrors('imageUrl')}" th:errors="*{imageUrl}" style="color:red";></div>
         </div>
         <div>

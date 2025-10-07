@@ -40,7 +40,7 @@ public class Product {
     private String category;
 
     @NotBlank(message = "説明は必須です。")
-    @Column(columnDefinition = "TEXT")
+    @Column(nullable = false, columnDefinition = "TEXT")
     private String description;
 
     @NotNull(message = "価格は必須です。")
