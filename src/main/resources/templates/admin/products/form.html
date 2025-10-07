@@ -11,18 +11,22 @@
         <div>
             <label>名前:</label>
             <input type="text" th:field="*{name}" required />
+            <div th:if="${#fields.hasErrors('name')}" th:errors="*{name}" style="color:red";></div>
         </div>
         <div>
             <label>説明:</label>
             <textarea th:field="*{description}"></textarea>
+            <div th:if="${#fields.hasErrors('description')}" th:errors="*{description}" style="color:red";></div>
         </div>
         <div>
             <label>価格:</label>
             <input type="number" th:field="*{price}" required />
+            <div th:if="${#fields.hasErrors('price')}" th:errors="*{price}" style="color:red";></div>
         </div>
         <div>
             <label>カテゴリ:</label>
             <input type="text" th:field="*{category}" required />
+            <div th:if="${#fields.hasErrors('category')}" th:errors="*{category}" style="color:red";></div>
         </div>
         <div>
             <label>商品画像URL:</label>

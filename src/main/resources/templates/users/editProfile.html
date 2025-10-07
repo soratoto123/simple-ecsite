@@ -11,14 +11,17 @@
         <div>
             <label>氏名:</label>
             <input type="text" th:field="*{name}" required />
+            <div th:if="${#fields.hasErrors('name')}" th:errors="*{name}" style="color:red";></div>
         </div>
         <div>
             <label>郵便番号:</label>
-            <input type="text" th:field="*{postalCode}" required />
+            <input type="text" th:field="*{postalCode}" required maxlength="8" />
+            <div th:if="${#fields.hasErrors('postalCode')}" th:errors="*{postalCode}" style="color:red";></div>
         </div>
         <div>
             <label>住所:</label>
             <input type="text" th:field="*{address}" required />
+            <div th:if="${#fields.hasErrors('address')}" th:errors="*{address}" style="color:red";></div>
         </div>
         <div>
             <button type="submit" class="btn btn-success">更新</button>

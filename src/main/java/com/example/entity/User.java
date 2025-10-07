@@ -29,8 +29,7 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
-    @NotBlank(message = "メールアドレスは必須です。")
+    
     @Pattern(regexp = ".+@.+\\..+", message = "有効なメールアドレスを入力してください")
     @Column(nullable = false, unique = true, length = 255)
     private String email;
